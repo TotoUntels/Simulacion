@@ -1,0 +1,15 @@
+# Graficando Chi cuadrado
+import matplotlib.pyplot as plt
+import numpy as np
+import scipy.stats as stats
+
+df = 34 # parametro de forma.
+chi2 = stats.chi2(df)
+x = np.linspace(chi2.ppf(0.01),
+                chi2.ppf(0.99), 100)
+fp = chi2.pdf(x) # Función de Probabilidad
+plt.plot(x, fp)
+plt.title('Distribución Chi cuadrado')
+plt.ylabel('probabilidad')
+plt.xlabel('valores')
+plt.show()
