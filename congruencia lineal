@@ -1,0 +1,54 @@
+from tkinter import *
+import tkinter as tk
+
+
+def calcular():
+    x = int(semilla.get())
+    a = int(multiplicador.get())
+    b = int(constante.get())
+    m = int(modulo.get())
+
+    cont = 0
+    for i in range(30):
+        funcion = (a * x + b) % m
+
+        i += 1
+        r = str(funcion)
+        x = funcion
+
+        listaSemilla.insert(END, str(i) + "era semilla: " + r)
+
+    if m == cont:
+        print("es completo")
+    else:
+        print("es incompleto")
+
+
+
+root = tk.Tk()
+miFrame = Frame(root, width=1200, height=1200)
+miFrame.pack()
+
+semilla = StringVar()
+multiplicador = StringVar()
+constante = StringVar()
+modulo = StringVar()
+
+Label(miFrame, text="x0").grid(row=0, column=0)
+Label(miFrame, text="a").grid(row=1, column=0)
+Label(miFrame, text="c").grid(row=2, column=0)
+Label(miFrame, text="m").grid(row=3, column=0)
+
+txt1 = Entry(miFrame, textvariable=semilla).grid(row=0, column=1, padx=10, pady=10)
+txt2 = Entry(miFrame, textvariable=multiplicador).grid(row=1, column=1, padx=10, pady=10)
+txt3 = Entry(miFrame, textvariable=constante).grid(row=2, column=1, padx=10, pady=10)
+txt4 = Entry(miFrame, textvariable=modulo).grid(row=3, column=1, padx=10, pady=10)
+
+listaSemilla = Listbox(miFrame, width=35)
+listaSemilla.insert(0, "Lista semillas")
+listaSemilla.grid(row=5, column=0, padx=10, pady=10)
+
+bcalcular = Button(miFrame, text="calcular", command=calcular, padx=42, pady=5).grid(row=4, column=0, padx=10, pady=10)
+blimpiar = Button(miFrame, text="limpiar campo", padx=42, pady=5).grid(row=4, column=1, padx=10, pady=10)
+
+root.mainloop()
